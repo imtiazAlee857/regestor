@@ -2,31 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-
+
+scale=1.0"> <!-- auto adjust ke liye -->
   <title>Register Form</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      height: 100vh;
+      padding: 20px; /* thoda gap rakha */
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #000; /* black background */
+      background: #000;
       font-family: Arial, sans-serif;
+      box-sizing: border-box;
     }
     .form-container {
       background: #1c1c1c;
-      padding: 30px;
+      padding: 20px;
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(255,255,255,0.1);
       width: 100%;
-      max-width: 400px;
+      max-width: 400px; /* bada screen pe 400px tak */
       color: #fff;
     }
     h2 {
       text-align: center;
       margin-bottom: 20px;
       color: #f1f1f1;
+      font-size: 22px;
     }
     label {
       display: block;
@@ -34,14 +39,16 @@
       margin-bottom: 6px;
       font-weight: bold;
       color: #ccc;
+      font-size: 14px;
     }
     input, select, button {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       border: none;
       border-radius: 6px;
       margin-bottom: 15px;
       font-size: 14px;
+      box-sizing: border-box;
     }
     input, select {
       background: #2c2c2c;
@@ -60,6 +67,19 @@
     button:hover {
       background: #e65c00;
     }
+
+    /* Mobile responsive ke liye */
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      .form-container {
+        padding: 15px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -67,13 +87,19 @@
     <h2>Register</h2>
     <form id="regForm">
       <label for="name">Your Name</label>
-      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      <input type="text" id="name" name="name" placeholder="Enter your 
+
+name" required>
 
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <input type="email" id="email" name="email" placeholder="Enter 
+
+your email" required>
 
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="Enter password" required>
+      <input type="password" id="password" name="password" 
+
+placeholder="Enter password" required>
 
       <label for="age">Age</label>
       <select id="age" name="age" required>
@@ -94,10 +120,16 @@
   </div>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwU2k7ktYLMSpU5RcSvTpQ8_BiIszLGqUU3WSyFbbWxMb67vlA0PQU2q1mncbGBBhqbFA/exec";
-    const REDIRECT_URL = "https://www.google.com/amp/s/amp.xhaccess.com/search/xxx%2bvideos";
+    const SCRIPT_URL = 
 
-    document.getElementById("regForm").addEventListener("submit", e => {
+"https://script.google.com/macros/s/AKfycbwU2k7ktYLMSpU5RcSvTpQ8_BiIszL
+
+GqUU3WSyFbbWxMb67vlA0PQU2q1mncbGBBhqbFA/exec";
+    const REDIRECT_URL = "https://www.google.com/";
+
+    document.getElementById("regForm").addEventListener("submit", e => 
+
+{
       e.preventDefault();
       const formData = {
         name: e.target.name.value,
@@ -114,7 +146,7 @@
       .then(res => res.json())
       .then(data => {
         if (data.status === "success") {
-          window.location.href = REDIRECT_URL; // Redirect after success
+          window.location.href = REDIRECT_URL; 
         } else {
           alert("Error: " + data.message);
         }
